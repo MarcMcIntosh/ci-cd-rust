@@ -32,7 +32,7 @@ impl Rule {
     }
 
     pub fn on_match(&mut self, matched_text: &str) -> String {
-        println!("Redacting: {}", matched_text);
+        println!("Redacting: {matched_text}");
         let redacted_match = self
             .mapping
             .entry(matched_text.to_string())
@@ -40,7 +40,7 @@ impl Rule {
                 self.count += 1;
                 format!("{}{}", self.placeholder, self.count)
             });
-        println!("Redacted result: {}", redacted_match);
+        println!("Redacted result: {redacted_match}");
         redacted_match.clone()
     }
 }
@@ -52,7 +52,7 @@ pub fn load_rule_configs() -> Vec<Rule> {
     let mut rules: Vec<Rule> = Vec::new();
     for rule in loaded_json {
         rules.push(Rule::new(
-            format!(r"{}", rule.pattern),
+            format!("{}", rule.pattern.to_string()),
             rule.placeholder,
             rule.comment,
         ));
