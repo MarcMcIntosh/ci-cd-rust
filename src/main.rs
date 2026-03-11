@@ -30,7 +30,7 @@ async fn health() -> impl Responder {
         .as_secs();
     checks.push(HealthCheck {
         name: "Container uptime".to_string(),
-        status: format!("{} seconds", uptime),
+        status: format!("{uptime} seconds"),
     });
 
     // Check memory usage
@@ -38,7 +38,7 @@ async fn health() -> impl Responder {
     let memory = memory_usage.percent();
     checks.push(HealthCheck {
         name: "Memory usage".to_string(),
-        status: format!("{} %", memory.to_string()),
+        status: format!("{memory} %"),
     });
 
     // Check disk usage
@@ -134,7 +134,7 @@ mod tests {
         let app = test::init_service(App::new().route("/redact", web::post().to(redact))).await;
         let req = test::TestRequest::post()
             .uri("/redact")
-            .set_json(&serde_json::json!(
+            .set_json(serde_json::json!(
                 "Alfred Smith and John Doe went to the store."
             ))
             .to_request();
