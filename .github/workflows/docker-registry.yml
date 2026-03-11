@@ -10,11 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Check env
-        env:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-        run: echo $DOCKERHUB_USERNAME
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
