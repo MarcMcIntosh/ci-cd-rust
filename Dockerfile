@@ -1,5 +1,5 @@
 # Use the official Rust image as a parent image
-FROM rust:latest as builder
+FROM rust:bullseye as builder
 
 # Set the working directory in the Docker image
 WORKDIR /usr/src/redactr
