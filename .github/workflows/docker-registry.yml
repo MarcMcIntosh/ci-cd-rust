@@ -26,5 +26,5 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: test/${{ env.REPO }}:${{ github.sha }}
+          tags: marcmcintosh/test:${{ env.REPO }}:${{ github.sha }}
           file: ./Dockerfile
